@@ -1,4 +1,5 @@
 from app import app
+from flask import jsonify, request
 from app.models import Professor, professorSchema
 
 
