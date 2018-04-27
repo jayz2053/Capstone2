@@ -24,9 +24,9 @@ class OfficeHours(db.Model):
     did = db.Column(db.String(5), unique=True, index=True)
     email = db.Column(db.String(35),db.ForeignKey('professor.email'))
     days= db.Column(db.String(5))
-    start_time db.Column(db.String(8))
-    end_time db.Column(db.String(8))
-    professor = relationship("Professor", back_populates="officeHours")
+    start_time = db.Column(db.String(8))
+    end_time = db.Column(db.String(8))
+    professor = db.relationship("Professor", back_populates="officeHours")
 
     def __repr__(self):
         return '<Hours {0}-{1} for {3}>'.format(self.start_time, self.end_time, self.email)
