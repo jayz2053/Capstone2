@@ -6,7 +6,7 @@ class Professor(db.Model):
     email = db.Column(db.String(35), unique=True)
     name = db.Column(db.String(60))
     dept = db.Column(db.String(25))
-    hours = db.relationship('OfficeHours', back_populates='professor')
+    hours = db.relationship('OfficeHours')
 
     def __repr__(self):
         return '<User {}>'.format(self.email)
@@ -26,7 +26,7 @@ class OfficeHours(db.Model):
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
-    professor = db.relationship("Professor", back_populates="officeHours")
+    #professor = db.relationship("Professor", back_populates="officeHours")
 
     def __repr__(self):
         return '<Hours {0}-{1} for {3}>'.format(self.start_time, self.end_time, self.email)
@@ -40,4 +40,3 @@ officeSchema = OfficeSchema(many=True)
 
 class Course(db.Model):
     crn = db.Column(db.String(5), primary_key=True)
-    
