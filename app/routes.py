@@ -1,4 +1,5 @@
 from app import app
+from app.modeles import Professor, professorSchema
 
 
 @app.route('/')
