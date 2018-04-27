@@ -37,3 +37,7 @@ class OfficeSchema(ma.Schema):
 
 officeSchema = OfficeSchema()
 officeSchema = OfficeSchema(many=True)
+
+class Course(db.Model):
+    crn = db.Column(db.String(5), primary_key=True)
+    
