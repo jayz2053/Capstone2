@@ -36,8 +36,8 @@ professorSchema = ProfessorSchema(many=True)
 
 class OfficeHours(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    did = db.Column(db.String(5), db.ForeignKey('destination.did'))
-    email = db.Column(db.String(35), db.ForeignKey('professor.email'))
+    did = db.Column(db.String(5))
+    email = db.Column(db.String(35))
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
@@ -87,11 +87,11 @@ class Course(db.Model):
     crn = db.Column(db.String(5), primary_key=True)
     courseNum = db.Column(db.String(7))
     name = db.Column(db.String(30))
-    email = db.Column(db.String(35), db.ForeignKey('professor.email'))
+    email = db.Column(db.String(35))
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
-    did = db.Column(db.String(5), db.ForeignKey('destination.did'))
+    did = db.Column(db.String(5))
 
     def __repr__(self):
         return '<Course {0} {1}>'.format(self.crn, self.courseNum)
