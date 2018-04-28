@@ -31,12 +31,13 @@ def getProfessor(email_id):
 @app.route('/department', methods=["GET"])
 def getDepartment():
 
+
     ans = []
 
     for dept in db.session.query(Professor.dept).distinct():
         ans.append(dept[0])
 
-    return make_response(dumps(ans))
+    return jsonify({'results': ans})
 
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
