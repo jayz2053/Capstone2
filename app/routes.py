@@ -25,8 +25,8 @@ def getProfessor(email_id):
 @app.route('/professor', methods=['POST'])
 def addProfessor():
     email = request.json['email']
-    name = request.name['name']
-    dept = request.dept['dept']
+    name = request.json['name']
+    dept = request.json['dept']
 
     new_professor(email, name, dept)
     db.session.add(new_professor)
