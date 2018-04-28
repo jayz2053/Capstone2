@@ -1,3 +1,12 @@
+'''
+LOOK INTO FURTHER REFACTORING OF MODELS AND ROUTES
+USING SEPERATE FILES AND __INIT__.py
+
+https://stackoverflow.com/questions/1944569/how-do-i-write-good-correct-package-init-py-files
+
+'''
+
+
 from app import db
 from app import ma
 
@@ -34,6 +43,13 @@ class OfficeHours(db.Model):
     end_time = db.Column(db.String(8))
     #professor = db.relationship("Professor", back_populates="officeHours")
 
+    def __init__(self, did, email, days, start, end):
+        self.did = did
+        self.email = email
+        self.days = days
+        self.start_time = start
+        self.end_time = end
+
     def __repr__(self):
         return '<Hours {0}-{1} for {3}>'.format(self.start_time, self.end_time, self.email)
 
@@ -54,6 +70,12 @@ class Destination(db.Model):
     def __repr__(self):
         return '<Destination {0} {1}>'.format(self.did, self.destType)
 
+    def __init__(self, did, destType, description):
+        self.did = did
+        self.destType = destType
+        self.description = description
+
+
 class DestinationSchema(ma.Schema):
     class Meta:
         fields = ('did', 'destType', 'description')
@@ -70,3 +92,20 @@ class Course(db.Model):
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
     did = db.Column(db.String(5), db.ForeignKey('destination.did'))
+
+    def __repr__(self):
+        return '<Course {0} {1}>'.format(self.crn, self.courseNum)
+
+    def __init__(self, crn, courseNum, name, email, days, start_time, end_time, did):
+        self.crn = crn
+        self.courseNum = courseNum
+        self.name = name
+        self.email = email
+        self.days = days
+        self.start_time = start_time
+        self.end_time = end_time
+        self.did = did
+
+class CourseSchema(ma.Schema):
+    class Meta:
+        fields = ('courseNum', 'name', 'days', 'start_time', 'end_time', 'did')
