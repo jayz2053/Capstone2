@@ -15,8 +15,8 @@ class Professor(db.Model):
     email = db.Column(db.String(35), unique=True)
     name = db.Column(db.String(60))
     dept = db.Column(db.String(25))
-    hours = db.relationship('OfficeHours', backref = 'office_hours')
-    teaches = db.relationship('Course', backref = 'teaches')
+    #hours = db.relationship('OfficeHours', backref = 'office_hours')
+    #teaches = db.relationship('Course', backref = 'teaches')
 
     def __init__(self, email, name, dept):
         self.email = email
@@ -64,8 +64,8 @@ class Destination(db.Model):
     did = db.Column(db.String(5), primary_key=True)
     destType = db.Column(db.String(15))
     description = db.Column(db.String(200))
-    hours = db.relationship('OfficeHours', backref='office')
-    classes = db.relationship('Course', backref='courses')
+    #hours = db.relationship('OfficeHours', backref='office')
+    #classes = db.relationship('Course', backref='courses')
 
     def __repr__(self):
         return '<Destination {0} {1}>'.format(self.did, self.destType)
