@@ -16,6 +16,15 @@ def index():
     return "Hello World!"
 
 #-----  GET ROUTES
+@app.route('/course', methods=["GET"])
+def getClasses():
+    all_class = Course.query.all()
+    results = courseSchema.dump(all_class)
+
+    return jsonify(results.data)
+
+@app.route('/course')
+
 @app.route('/professor', methods=["GET"])
 def getProfessors():
     all_prof = Professor.query.all()

@@ -85,6 +85,7 @@ destinationSchema = DestinationSchema(many=True)
 
 class Course(db.Model):
     crn = db.Column(db.String(5), primary_key=True)
+    dept = db.Column(db.String(20))
     courseNum = db.Column(db.String(7))
     name = db.Column(db.String(30))
     email = db.Column(db.String(35))
@@ -96,8 +97,9 @@ class Course(db.Model):
     def __repr__(self):
         return '<Course {0} {1}>'.format(self.crn, self.courseNum)
 
-    def __init__(self, crn, courseNum, name, email, days, start_time, end_time, did):
+    def __init__(self, crn, dept, courseNum, name, email, days, start_time, end_time, did):
         self.crn = crn
+        self.dept = dept
         self.courseNum = courseNum
         self.name = name
         self.email = email
