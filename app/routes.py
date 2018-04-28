@@ -1,10 +1,12 @@
 from app import app
-from flask import jsonify, request
+from json import dumps
+from flask import jsonify, request, make_response
 from app.models import Professor, professorSchema
 from app.models import OfficeHours, officeSchema
 from app.models import Destination, destinationSchema
 from app.models import Course, courseSchema
 from app import db
+
 #from app.models import
 
 
@@ -29,13 +31,12 @@ def getProfessor(email_id):
 @app.route('/department', methods=["GET"])
 def getDepartment():
 
-    response = {}
-    response['ans'] = []
+    ans = []
 
     for dept in db.session.query(Professor.dept).distinct():
-        response['ans'].append(dept)
+        ans.append(dept)
 
-    return jsonify(response)
+    return make_response(dumps(ans))
 
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
