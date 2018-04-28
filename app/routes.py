@@ -26,6 +26,10 @@ def getProfessor(email_id):
     result = professorSchema.dump(uno_prof)
     return jsonify(result.data)
 
+@app.route('/department', methods=["GET"])
+def getDepartment():
+    all_dept = Professor.query.distinct(Professor.dept))
+
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
 def addProfessor():
