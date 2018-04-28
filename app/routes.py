@@ -23,7 +23,13 @@ def getClasses():
 
     return jsonify(results.data)
 
-@app.route('/course')
+@app.route('/department/course/<string:dept>')
+def getCoursesByDept(dept):
+    courseList = Course.query.filter(Course.dept == dept.replace('-', ' '))
+    result = courseSchema.dump(courseList)
+
+    return jsonify(result.data)
+
 
 @app.route('/professor', methods=["GET"])
 def getProfessors():
@@ -39,7 +45,7 @@ def getProfessor(email_id):
 
     return jsonify(result.data)
 
-@app.route('/professor/department/<string:dept>', methods=['GET'])
+@app.route('/department/professor/<string:dept>', methods=['GET'])
 def getProfByDept(dept):
 
     profList = Professor.query.filter(Professor.dept == dept.replace('-', ' '))
