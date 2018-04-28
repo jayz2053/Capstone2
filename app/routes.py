@@ -34,7 +34,7 @@ def getDepartment():
     ans = []
 
     for dept in db.session.query(Professor.dept).distinct():
-        ans.append(dept)
+        ans.append(dept[0])
 
     return make_response(dumps(ans))
 
