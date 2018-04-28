@@ -20,4 +20,4 @@ def getProfessors():
 def getProfessor(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id))
     result = professorSchema.dump(uno_prof)
-    return jsonify(results.data)
+    return jsonify(result.data)
