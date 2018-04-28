@@ -9,6 +9,11 @@ class Professor(db.Model):
     hours = db.relationship('OfficeHours', backref = 'office_hours')
     teaches = db.relationship('Course', backref = 'teaches')
 
+    def __init(self, email, name, dept):
+        self.email = email
+        self.name = name
+        self.dept = dept
+
     def __repr__(self):
         return '<User {}>'.format(self.email)
 

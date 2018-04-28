@@ -21,3 +21,13 @@ def getProfessor(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id))
     result = professorSchema.dump(uno_prof)
     return jsonify(result.data)
+
+@app.route('/professor', methods=['POST'])
+def addProfessor():
+    email = request.json['email']
+    name = request.name['name']
+    dept = request.dept['dept']
+
+    new_professor(email, name, dept)
+    db.session.add(new_professor)
+    db.session.commit()
