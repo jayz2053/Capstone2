@@ -20,18 +20,25 @@ def index():
 def getProfessors():
     all_prof = Professor.query.all()
     results = professorSchema.dump(all_prof)
+
     return jsonify(results.data)
 
 @app.route('/professor/<string:email_id>', methods=["GET"])
 def getProfessor(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id))
     result = professorSchema.dump(uno_prof)
+
+    return jsonify(result.data)
+
+@app.route('/professor/department/<string:dept>', methods=['GET'])
+def getProfByDept(dept):
+    profList = Professor.query.filter(Professor.dept == dept)
+    result = professorSchema.dump(profList)
+
     return jsonify(result.data)
 
 @app.route('/department', methods=["GET"])
 def getDepartment():
-
-
     ans = []
 
     for dept in db.session.query(Professor.dept).distinct():
