@@ -109,3 +109,6 @@ class Course(db.Model):
 class CourseSchema(ma.Schema):
     class Meta:
         fields = ('courseNum', 'name', 'days', 'start_time', 'end_time', 'did')
+
+courseSchema = CourseSchema()
+courseSchema = CourseSchema(many=True)
