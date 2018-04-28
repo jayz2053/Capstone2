@@ -96,6 +96,7 @@ def addDestination():
 @app.route('/course', methods=['POST'])
 def addCourse():
     crn = request.json['crn']
+    dept = request.json['dept']
     courseNum = request.json['courseNum']
     name = request.json['name']
     email = request.json['email']
@@ -104,7 +105,7 @@ def addCourse():
     end_time = request.json['end_time']
     did = request.json['did']
 
-    new_course = Course(crn, courseNum, name, email, days, start_time, end_time, did)
+    new_course = Course(crn, dept, courseNum, name, email, days, start_time, end_time, did)
     db.session.add(new_course)
     db.session.commit()
 
