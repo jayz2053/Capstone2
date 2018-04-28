@@ -11,7 +11,7 @@ def index():
     return "What up bitches"
 
 @app.route('/professor', methods=["GET"])
-def getProfessor():
+def getProfessors():
     all_prof = Professor.query.all()
     results = professorSchema.dump(all_prof)
     return jsonify(results.data)
