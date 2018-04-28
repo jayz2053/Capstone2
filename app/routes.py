@@ -30,6 +30,12 @@ def getCoursesByDept(dept):
 
     return jsonify(result.data)
 
+@app.route('/office', methods=['GET'])
+def getOfficeHours():
+    all_office = OfficeHours.query.all()
+    results = officeSchema.dump(all_office)
+
+    return jsonify(results.data)
 
 @app.route('/professor', methods=["GET"])
 def getProfessors():
