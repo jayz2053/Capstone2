@@ -34,7 +34,7 @@ def getDepartment():
     for dept in db.session.query(Professor.dept).distinct():
         deptlist.append(dept)
 
-    return({"ans": deptlist})
+    return jsonify({"ans": deptlist})
 
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
