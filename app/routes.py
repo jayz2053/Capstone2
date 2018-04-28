@@ -28,6 +28,6 @@ def addProfessor():
     name = request.json['name']
     dept = request.json['dept']
 
-    new_professor(email, name, dept)
+    new_professor = Professor(email, name, dept)
     db.session.add(new_professor)
     db.session.commit()
