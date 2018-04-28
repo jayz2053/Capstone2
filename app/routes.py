@@ -28,7 +28,7 @@ def getProfessor(email_id):
 
 @app.route('/department', methods=["GET"])
 def getDepartment():
-    all_dept = Professor.query.distinct(Professor.dept)
+    all_dept = Professor.query(Professor.dept).distinct()
 
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
