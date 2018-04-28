@@ -16,7 +16,7 @@ def getProfessor():
     results = professorSchema.dump(all_prof)
     return jsonify(results.data)
 
-@app.route('/professor/<String:email_id>', methods=["GET"])
+@app.route('/professor/<string:email_id>', methods=["GET"])
 def getProfessor(email_id):
     uno_prof = Professor.query.filter(email == '{}@uwf.edu'.format(email_id))
     result = professorSchema.dump(uno_prof)
