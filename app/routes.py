@@ -32,3 +32,4 @@ def addProfessor():
     new_professor = Professor(email, name, dept)
     db.session.add(new_professor)
     db.session.commit()
+    return jsonify(new_professor)
