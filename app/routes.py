@@ -30,6 +30,8 @@ def getProfessor(email_id):
 def getDepartment():
     all_dept = Professor.query(Professor.dept).distinct()
 
+    return(all_dept)
+
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
 def addProfessor():
