@@ -6,7 +6,8 @@ class Professor(db.Model):
     email = db.Column(db.String(35), unique=True)
     name = db.Column(db.String(60))
     dept = db.Column(db.String(25))
-    hours = db.relationship('OfficeHours')
+    hours = db.relationship('OfficeHours', backref = 'office_hours')
+    teaches = db.relationship('Course', backref = 'teaches')
 
     def __repr__(self):
         return '<User {}>'.format(self.email)
@@ -21,8 +22,8 @@ professorSchema = ProfessorSchema(many=True)
 
 class OfficeHours(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    did = db.Column(db.String(5), unique=True, index=True)
-    email = db.Column(db.String(35),db.ForeignKey('professor.email'))
+    did = db.Column(db.String(5), db.ForeignKey('destination.did'))
+    email = db.Column(db.String(35), db.ForeignKey('professor.email'))
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
@@ -38,5 +39,29 @@ class OfficeSchema(ma.Schema):
 officeSchema = OfficeSchema()
 officeSchema = OfficeSchema(many=True)
 
+class Destination(db.Model):
+    did = db.Column(db.String(5), primary_key=True)
+    destType = db.Column(db.String(15))
+    description = db.Column(db.String(200))
+    hours = db.relationship('OfficeHours', backref='office')
+    classes = db.relationship('Course', backref='courses')
+
+    def __repr__(self):
+        rerturn '<Destination {0} {1}>'.format(self.did, self.destType)
+
+class destinationSchema(ma.Schema):
+    class Meta:
+        fields = ('did', 'destType', 'description')
+
+destinationSchema = destinationSchema()
+destinationSchema = destinationSchema(many=True)
+
 class Course(db.Model):
     crn = db.Column(db.String(5), primary_key=True)
+    courseNum = db.Column(db.String(7))
+    name = db.Column(db.String(30))
+    email = db.Column(db.String(35), db.ForeignKey('professor.email'))
+    days= db.Column(db.String(5))
+    start_time = db.Column(db.String(8))
+    end_time = db.Column(db.String(8))
+    did = db.Column(db.String(5), db.ForeignKey('destination.did'))
