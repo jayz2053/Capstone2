@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchClass"
+    style="@style/splash">
+
+    <Button
+        android:id="@+id/homeScreen_button"
+        style="@style/button"
+        android:layout_width="134dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp"
+        android:text="Home"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="73dp"
+        android:layout_height="56dp"
+        android:layout_marginLeft="311dp"
+        android:layout_marginStart="311dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/uwf_logo" />
+
+    <Spinner
+        android:id="@+id/professor_spinner"
+        style="@style/textBox"
+        android:layout_width="244dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="280dp"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Spinner
+        android:id="@+id/class_spinner"
+        style="@style/textBox"
+        android:layout_width="244dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="180dp"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Spinner
+        android:id="@+id/department_spinner2"
+        style="@style/textBox"
+        android:layout_width="244dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="84dp"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <TextView
+        android:id="@+id/TitleLabel"
+        style="@style/splash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="Search By Class"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/DeparmentLabel"
+        style="@style/spinnerHeader"
+        android:layout_width="82dp"
+        android:layout_height="24dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="16dp"
+        android:text="Department"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+    <TextView
+        android:id="@+id/orLabel"
+        style="@style/spinnerHeader"
+        android:layout_width="112dp"
+        android:layout_height="19dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="184dp"
+        android:text="or"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+    <TextView
+        android:id="@+id/andLabel"
+        style="@style/spinnerHeader"
+        android:layout_width="112dp"
+        android:layout_height="19dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginTop="88dp"
+        android:text="and"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+    <TextView
+        android:id="@+id/classLabel"
+        style="@style/spinnerHeader"
+        android:layout_width="87dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="120dp"
+        android:text="Class Name"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+    <TextView
+        android:id="@+id/professorLabel"
+        style="@style/spinnerHeader"
+        android:layout_width="112dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="220dp"
+        android:text="Professor Name"
+        app:fontFamily="@font/archivo_narrow_bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TitleLabel" />
+
+    <Button
+        android:id="@+id/SearchButton"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Search"
+        app:layout_constraintEnd_toEndOf="@+id/professor_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/professor_spinner" />
+
+</android.support.constraint.ConstraintLayout>

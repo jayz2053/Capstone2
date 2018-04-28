@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Scavenger App</string>
+    <string name="title_activity_home_screen">HomeScreen</string>
+    <string name="result_text_default">Focus camera on QR code...</string>
+</resources>
