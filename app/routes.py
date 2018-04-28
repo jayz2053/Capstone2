@@ -3,7 +3,7 @@ from flask import jsonify, request
 from app.models import Professor, professorSchema
 from app.models import OfficeHours, officeSchema
 from app.models import Destination, destinationSchema
-from app.models import Course,
+from app.models import Course, courseSchema
 from app import db
 #from app.models import
 
