@@ -47,7 +47,7 @@ class Destination(db.Model):
     classes = db.relationship('Course', backref='courses')
 
     def __repr__(self):
-        rerturn '<Destination {0} {1}>'.format(self.did, self.destType)
+        return '<Destination {0} {1}>'.format(self.did, self.destType)
 
 class destinationSchema(ma.Schema):
     class Meta:
