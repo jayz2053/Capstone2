@@ -49,12 +49,12 @@ class Destination(db.Model):
     def __repr__(self):
         return '<Destination {0} {1}>'.format(self.did, self.destType)
 
-class destinationSchema(ma.Schema):
+class DestinationSchema(ma.Schema):
     class Meta:
         fields = ('did', 'destType', 'description')
 
-destinationSchema = destinationSchema()
-destinationSchema = destinationSchema(many=True)
+destinationSchema = DestinationSchema()
+destinationSchema = DestinationSchema(many=True)
 
 class Course(db.Model):
     crn = db.Column(db.String(5), primary_key=True)
