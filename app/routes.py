@@ -32,6 +32,9 @@ def getProfessor(email_id):
 
 @app.route('/professor/department/<string:dept>', methods=['GET'])
 def getProfByDept(dept):
+
+    print(dept.replace('-', ' '))
+
     profList = Professor.query.filter(Professor.dept == dept.replace('-', ' '))
     result = professorSchema.dump(profList)
 
