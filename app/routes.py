@@ -25,7 +25,7 @@ def getClasses():
 
 @app.route('/department/course/<string:dept>')
 def getCoursesByDept(dept):
-    courseList = Course.query.filter(Course.dept == dept.replace('-', ' ')).all()[0]
+    courseList = Course.query.filter(Course.dept == dept.replace('-', ' ')).all()
     result = courseSchema.dump(courseList)
 
     return jsonify(result.data)
@@ -46,14 +46,14 @@ def getProfessors():
 
 @app.route('/professor/<string:email_id>', methods=["GET"])
 def getProfessor(email_id):
-    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()[0]
+    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()
     result = professorSchema.dump(uno_prof)
 
     return jsonify(result.data)
 
 @app.route('/professor/office/<string:email_id>', methods=["GET"])
 def getProfessorOfficeHours(email_id):
-    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()[0]
+    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()
 
     print(uno_prof.dept)
 
