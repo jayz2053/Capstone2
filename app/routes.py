@@ -46,7 +46,7 @@ def getProfessors():
 
 @app.route('/professor/<string:email_id>', methods=["GET"])
 def getProfessor(email_id):
-    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id))
+    uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).first()
     result = professorSchema.dump(uno_prof)
 
     return jsonify(result.data)
@@ -73,6 +73,13 @@ def getDepartment():
 def getDestination():
     all_dest = Destination.query.all()
     result = destinationSchema.dump(all_dest)
+
+    return jsonify(result.data)
+
+@app.route('/destination/<string:did>', methods=['GET'])
+def getSingleDestination(did):
+    uno_dest = Destination.query().filter(Destination.did == did).first()
+    result = destinationSchema.dump(uno_dest)
 
     return jsonify(result.data)
 
@@ -112,6 +119,9 @@ def addDestination():
     db.session.commit()
 
     return jsonify(new_destination)
+
+
+
 
 @app.route('/course', methods=['POST'])
 def addCourse():
