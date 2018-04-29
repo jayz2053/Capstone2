@@ -78,7 +78,7 @@ def getDestination():
 
 @app.route('/destination/<string:did>', methods=['GET'])
 def getSingleDestination(did):
-    uno_dest = Destination.query.filter(Destination.did == did).first()
+    uno_dest = Destination.query.filter(Destination.did == did)
     result = destinationSchema.dump(uno_dest)
 
     return jsonify(result.data)
