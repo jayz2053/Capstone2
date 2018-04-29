@@ -55,7 +55,7 @@ def getProfessor(email_id):
 def getProfessorOfficeHours(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()
 
-    #print(uno_prof.dept)
+    print(uno_prof[0].dept)
 
     hoursOfProf = uno_prof.hours
 
