@@ -51,6 +51,16 @@ def getProfessor(email_id):
 
     return jsonify(result.data)
 
+@app.route('/professor/office/<string:email_id>', methods=["GET"])
+def getProfessorOfficeHours(email_id):
+    uno_prof = Professor.query.filer(Professor.email = '{}@uwf.edu'.format(email_id))
+    hoursOfProf = uno_prof.hours
+
+    for item in hoursOfProf:
+        print(item)
+
+    results = officeSchema.dump(hoursOfProf)
+    return jsonify(results.data)
 
 
 @app.route('/department/professor/<string:dept>', methods=['GET'])
