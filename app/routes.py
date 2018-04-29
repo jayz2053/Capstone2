@@ -54,6 +54,9 @@ def getProfessor(email_id):
 @app.route('/professor/office/<string:email_id>', methods=["GET"])
 def getProfessorOfficeHours(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id))
+
+    print(uno_prof.dept)
+
     hoursOfProf = uno_prof.hours
 
     for item in hoursOfProf:
