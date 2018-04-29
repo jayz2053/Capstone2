@@ -65,7 +65,7 @@ class Destination(db.Model):
     destType = db.Column(db.String(15))
     description = db.Column(db.String(200))
     courses = db.relationship('Course', backref = 'destination')
-    officeHours db.relationship('OfficeHous', backref = 'destination')
+    officeHours = db.relationship('OfficeHous', backref = 'destination')
 
 
     def __repr__(self):
