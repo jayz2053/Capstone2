@@ -15,8 +15,8 @@ class Professor(db.Model):
     email = db.Column(db.String(35), unique=True)
     name = db.Column(db.String(60))
     dept = db.Column(db.String(25))
-    hours = db.relationship('OfficeHours', backref='hours')
-
+    hours = db.relationship('OfficeHours', backref='prof')
+    courses = db.relationship('Course', backref = 'prof')
 
     def __init__(self, email, name, dept):
         self.email = email
@@ -36,7 +36,7 @@ professorSchema = ProfessorSchema(many=True)
 
 class OfficeHours(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    did = db.Column(db.String(5))                   # FOREIGN KEY
+    did = db.Column(db.String(5), db.ForeignKey('destination.did'))                   # FOREIGN KEY
     email = db.Column(db.String(35), db.ForeignKey('professor.email'))                # FOREIGN KEY
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
@@ -64,6 +64,8 @@ class Destination(db.Model):
     did = db.Column(db.String(5), primary_key=True)
     destType = db.Column(db.String(15))
     description = db.Column(db.String(200))
+    courses = db.relationship('Course', backref = 'destination')
+    officeHours db.relationship('OfficeHous', backref = 'destination')
 
 
     def __repr__(self):
@@ -87,11 +89,11 @@ class Course(db.Model):
     dept = db.Column(db.String(20))
     courseNum = db.Column(db.String(7))
     name = db.Column(db.String(30))
-    email = db.Column(db.String(35))        #FOREIGN KEY
+    email = db.Column(db.String(35), db.ForeignKey('professor.email'))        #FOREIGN KEY
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
-    did = db.Column(db.String(5))           #FOREIGN KEY
+    did = db.Column(db.String(5), db.ForeignKey('destination.did'))           #FOREIGN KEY
 
     def __repr__(self):
         return '<Course {0} {1}>'.format(self.crn, self.courseNum)
