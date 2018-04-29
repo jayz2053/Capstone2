@@ -51,7 +51,7 @@ class OfficeHours(db.Model):
         self.end_time = end
 
     def __repr__(self):
-        return '<Hours {0}-{1} for {3}>'.format(self.start_time, self.end_time, self.email)
+        return '<Hours {0}-{1} for {2}>'.format(self.start_time, self.end_time, self.email)
 
 class OfficeSchema(ma.Schema):
     class Meta:
