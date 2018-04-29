@@ -55,13 +55,14 @@ def getProfessor(email_id):
 def getProfessorOfficeHours(email_id):
     uno_prof = Professor.query.filter(Professor.email == '{}@uwf.edu'.format(email_id)).all()
 
-    print(uno_prof[0].dept)
+    #print(uno_prof[0].dept)
 
-    hoursOfProf = uno_prof.hours
+    hoursOfProf = uno_prof[0].hours
 
+    '''
     for item in hoursOfProf:
         print(item)
-
+    '''
     results = officeSchema.dump(hoursOfProf)
     return jsonify(results.data)
 
