@@ -68,6 +68,14 @@ def getDepartment():
 
     return jsonify({'results': ans})
 
+
+@app.route('/destination', methods=["GET"])
+def getDestination():
+    all_dest = Destination.query.all()
+    result = destinationSchema.dump(all_dest)
+
+    return jsonify(result.data)
+
 #-----  POST ROUTES
 @app.route('/professor', methods=['POST'])
 def addProfessor():
