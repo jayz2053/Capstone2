@@ -15,8 +15,8 @@ class Professor(db.Model):
     email = db.Column(db.String(35), unique=True)
     name = db.Column(db.String(60))
     dept = db.Column(db.String(25))
-    #hours = db.relationship('OfficeHours', backref = 'office_hours')
-    #teaches = db.relationship('Course', backref = 'teaches')
+    hours = db.relationship('OfficeHours', backref='hours')
+
 
     def __init__(self, email, name, dept):
         self.email = email
@@ -36,12 +36,12 @@ professorSchema = ProfessorSchema(many=True)
 
 class OfficeHours(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    did = db.Column(db.String(5))
-    email = db.Column(db.String(35))
+    did = db.Column(db.String(5))                   # FOREIGN KEY
+    email = db.Column(db.String(35), db.ForeignKey('professor.email'))                # FOREIGN KEY
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
-    #professor = db.relationship("Professor", back_populates="officeHours")
+
 
     def __init__(self, did, email, days, start, end):
         self.did = did
@@ -64,8 +64,7 @@ class Destination(db.Model):
     did = db.Column(db.String(5), primary_key=True)
     destType = db.Column(db.String(15))
     description = db.Column(db.String(200))
-    #hours = db.relationship('OfficeHours', backref='office')
-    #classes = db.relationship('Course', backref='courses')
+
 
     def __repr__(self):
         return '<Destination {0} {1}>'.format(self.did, self.destType)
@@ -88,11 +87,11 @@ class Course(db.Model):
     dept = db.Column(db.String(20))
     courseNum = db.Column(db.String(7))
     name = db.Column(db.String(30))
-    email = db.Column(db.String(35))
+    email = db.Column(db.String(35))        #FOREIGN KEY
     days= db.Column(db.String(5))
     start_time = db.Column(db.String(8))
     end_time = db.Column(db.String(8))
-    did = db.Column(db.String(5))
+    did = db.Column(db.String(5))           #FOREIGN KEY
 
     def __repr__(self):
         return '<Course {0} {1}>'.format(self.crn, self.courseNum)
